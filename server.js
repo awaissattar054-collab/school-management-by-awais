@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { logAttendance, generateMonthlyReport, analyzeStudentSentiment } = require('./automation_logic');
 const db = require('./db');
 require('dotenv').config();
@@ -6,6 +7,11 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(express.static('.'));
+
+// Explicitly serve index.html for the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 const PORT = process.env.PORT || 3000;
 
