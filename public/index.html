@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI School Manager | Sentiment Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduAdmin AI</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('attendance')"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+                    <li><a href="#" onclick="showSection('messages')"><i class="fas fa-comment-dots"></i> Messaging</a></li>
+                    <li><a href="#"><i class="fas fa-user-graduate"></i> Students</a></li>
+                    <li><a href="#"><i class="fas fa-wallet"></i> Fees</a></li>
+                    <li><a href="#"><i class="fas fa-heartbeat"></i> Sentiment</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search students...">
+                </div>
+                <div class="user-profile">
+                    <span class="role">Admin Portal</span>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User">
+                </div>
+            </header>
+
+            <!-- Sections -->
+            <section id="dashboard-section" class="section active">
+                <div class="dashboard-grid">
+                    <!-- Stats Cards -->
+                    <div class="stats-cards">
+                        <div class="card stat-card mint">
+                            <div class="icon"><i class="fas fa-users"></i></div>
+                            <div class="data">
+                                <h3>1,284</h3>
+                                <p>Total Students</p>
+                            </div>
+                        </div>
+                        <div class="card stat-card navy">
+                            <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+                            <div class="data">
+                                <h3>$12.5k</h3>
+                                <p>Monthly Revenue</p>
+                            </div>
+                        </div>
+                        <div class="card stat-card gold">
+                            <div class="icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="data">
+                                <h3>94%</h3>
+                                <p>Avg. Attendance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sentiment Tracker Section -->
+                    <div class="card sentiment-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-smile"></i> Student Sentiment Tracker</h2>
+                            <div class="student-selector">
+                                <select id="studentSelect">
+                                    <option value="1">Alice Johnson</option>
+                                    <option value="2">Bob Smith</option>
+                                    <option value="3">Charlie Brown</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="sentimentChart"></canvas>
+                        </div>
+                        <div class="card-footer">
+                            <div class="status-badge" id="currentSentiment">
+                                Status: <span class="tag happy">Happy</span>
+                            </div>
+                            <button class="btn-share" id="shareBtn">
+                                <i class="fas fa-share-alt"></i> Share Achievements
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Alerts Section -->
+                    <div class="card alerts-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Counselor Alerts</h3>
+                        <ul class="alert-list" id="alertList">
+                            <li class="alert-item warning">
+                                <span class="dot"></span>
+                                <div class="alert-info">
+                                    <strong>Bob Smith</strong> - Sentiment Drop
+                                    <p>Score dropped below 50% threshold.</p>
+                                </div>
+                                <span class="time">2h ago</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attendance Section (Teacher View) -->
+            <section id="attendance-section" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-clipboard-list"></i> Teacher Attendance Portal</h2>
+                    <p class="section-desc">Mark student presence for today's session.</p>
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Grade</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceList">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Messaging Section (Simulation) -->
+            <section id="messages-section" class="section">
+                <div class="chat-container-sim">
+                    <div class="chat-sidebar">
+                        <h3>Conversations</h3>
+                        <div class="chat-list" id="chatList">
+                            <!-- Simulated contacts -->
+                        </div>
+                    </div>
+                    <div class="chat-main">
+                        <div class="chat-header" id="activeChatName">Parent of Alice Johnson</div>
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Messages -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <div class="toast-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="toast-content">
+            <h4 id="toastTitle">WhatsApp Notification</h4>
+            <p id="toastMessage">Parent Notification: Your child was absent today.</p>
+        </div>
+    </div>
+
+    <!-- Modal for Sharing -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Share Achievement</h2>
+            <div class="share-preview">
+                <canvas id="achievementCanvas" width="600" height="400" style="width: 100%; border-radius: 15px;"></canvas>
+                <div class="branding">Generated by EduAdmin AI</div>
+            </div>
+            <div class="share-options">
+                <button class="btn-social fb" onclick="downloadAchievement()"><i class="fas fa-download"></i> Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
