@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 99, 102, 241;
+  --secondary: 168, 85, 247;
+}
+
+body {
+  color: #0f172a;
+  background-color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
