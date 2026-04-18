@@ -21,10 +21,10 @@
                     <li class="active"><a href="#" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
                     <li><a href="#" onclick="showSection('attendance')"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                     <li><a href="#" onclick="showSection('messages')"><i class="fas fa-comment-dots"></i> Messaging</a></li>
-                    <li><a href="#"><i class="fas fa-user-graduate"></i> Students</a></li>
-                    <li><a href="#"><i class="fas fa-wallet"></i> Fees</a></li>
-                    <li><a href="#"><i class="fas fa-heartbeat"></i> Sentiment</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" onclick="showSection('students')"><i class="fas fa-user-graduate"></i> Students</a></li>
+                    <li><a href="#" onclick="showSection('fees')"><i class="fas fa-wallet"></i> Fees</a></li>
+                    <li><a href="#" onclick="showSection('sentiment')"><i class="fas fa-heartbeat"></i> Sentiment</a></li>
+                    <li><a href="#" onclick="showSection('settings')"><i class="fas fa-cog"></i> Settings</a></li>
                 </ul>
             </nav>
         </aside>
@@ -146,6 +146,79 @@
                         <div class="chat-messages" id="chatMessages">
                             <!-- Messages -->
                         </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Students Section -->
+            <section id="students-section" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-user-graduate"></i> Student Directory</h2>
+                    <p class="section-desc">Manage all enrolled students and their profiles.</p>
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Grade</th>
+                                <th>Parent Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentDirectoryList">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Fees Section -->
+            <section id="fees-section" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-wallet"></i> Fee Management</h2>
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Student</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feeList">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sentiment Detail Section -->
+            <section id="sentiment-section" class="section">
+                <div class="sentiment-grid">
+                    <div class="card">
+                        <h3>AI Analysis Overview</h3>
+                        <p>Detailed psychological and academic growth metrics.</p>
+                        <div id="sentimentDetailContent">
+                            <!-- Detailed AI Insight -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-cog"></i> System Settings</h2>
+                    <div class="settings-group">
+                        <label>School Name</label>
+                        <input type="text" value="EduAdmin AI Academy">
+                        
+                        <label>Notification Channel</label>
+                        <select>
+                            <option>WhatsApp (Active)</option>
+                            <option>SMS</option>
+                            <option>Email</option>
+                        </select>
+                        
+                        <button class="btn-share" style="margin-top: 20px;">Save Configuration</button>
                     </div>
                 </div>
             </section>
