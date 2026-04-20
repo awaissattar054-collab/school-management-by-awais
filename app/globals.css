@@ -3,25 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --primary: 99, 102, 241;
-  --secondary: 168, 85, 247;
+  --primary: 23, 43, 77; /* Navy Blue */
+  --secondary: 45, 206, 137; /* Mint Green */
+  --navy: #172B4D;
+  --mint: #2DCE89;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: #0f172a;
-  background-color: #f8fafc;
-  font-family: 'Inter', sans-serif;
+  color: #172B4D;
+  background-color: #f8fbff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--secondary)));
+  background: linear-gradient(135deg, var(--navy), var(--mint));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+::selection {
+  background-color: #2DCE89;
+  color: white;
 }
