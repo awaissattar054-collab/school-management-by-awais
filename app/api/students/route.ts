@@ -6,8 +6,15 @@ export async function GET() {
     // Try to fetch from real DB
     const students = await query('SELECT * FROM Students ORDER BY Name ASC');
     
-    if (students) {
-      return NextResponse.json(students);
+    if (students && Array.isArray(students)) {
+      const mapped = students.map((s: any) => ({
+        id: s.ID,
+        name: s.Name,
+        grade: s.Grade,
+        parent: s.Guardian_Name,
+        status: s.Balance_Fees > 0 ? 'Due' : 'Active'
+      }));
+      return NextResponse.json(mapped);
     }
 
     // Fallback to Mock Data if DB is not setup or connection fails
